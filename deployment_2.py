@@ -12,14 +12,14 @@ def index():
  
 def ValuePredictor(to_predict_list):
     to_predict = np.array(to_predict_list).reshape(1,9)
-    loaded_model = pickle.load(open("D:\Studies\Technocolab\code\deploy_flask\QDA.pkl","rb"))
+    loaded_model = pickle.load(open("./QDA.pkl","rb"))
     preds = loaded_model.predict(to_predict)
     # 0 : operating, 1 : closed
     pred = preds[0]
     if pred == 0:
         result = 'operating'
     elif pred == 1:
-        loaded_model = pickle.load(open("D:\Studies\Technocolab\code\deploy_flask\RF.pkl","rb"))
+        loaded_model = pickle.load(open("./RF.pkl","rb"))
         preds = loaded_model.predict(to_predict)
     # 0 : operating, 1 : acquired, 2 : closed, 3 : ipo
         pred = preds[0]
